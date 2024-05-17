@@ -1,0 +1,45 @@
+
+
+
+
+
+
+  .direct{
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	width: 218px;
+	height: 34px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 0px;
+	background: transparent;
+	border: transparent;
+	border-radius: 5px;
+	/* box-shadow: 0 0 10px rgba(255, 253, 253, 0.7); */
+	/* color: rgb(203, 220, 241); */
+	/* color: rgb(61, 82, 5); */
+	/* list-style: none; */
+
+  }
+
+    .direct text{
+		color:rgb(204, 196, 196);
+		font-family: 'Lato', sans-serif, 'Montserrat Thin', sans-serif, Montserrat;
+		font-weight: 400;
+		font-size: 20px;
+
+	}
+
+	/* .direct text2{
+		color:rgb(204, 196, 196);
+		font-family: 'Lato', sans-serif, 'Montserrat Thin', sans-serif, Montserrat;
+		font-weight: 100;
+		font-size: 20px;
+	} */
+
+	.direct:hover{
+		box-shadow: 0 0 10px rgb(255, 255, 255);
+		background: #153252;
+	}
+

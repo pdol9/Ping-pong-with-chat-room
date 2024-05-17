@@ -1,0 +1,125 @@
+version: '3.7'
+
+volumes:
+
+  database:
+    name: database
+    driver: local
+
+  backend_node_modules:
+    name: backend_node_modules
+    driver: local
+
+  frontend_node_modules:
+    name: frontend_node_modules
+    driver: local
+
+networks:
+
+  db:
+    name: db
+    driver: bridge
+
+  api:
+    name: api
+    driver: bridge
+
+  app:
+    name: app
+    driver: bridge
+
+services:
+
+  database:
+    container_name: $DATABASE_HOST
+    build:
+      context: ./requirements/database/
+      dockerfile: Dockerfile
+    image: database
+    restart: always
+    networks:
+      - db
+    expose:
+      - $DATABASE_PORT
+    volumes:
+      - type: volume
+        source: database
+        target: /var/lib/postgresql/data/
+    env_file:
+      - ./requirements/database/.env
+    environment:
+      PGPORT: $DATABASE_PORT
+
+  backend:
+    container_name: $BACKEND_HOST
+    build:
+      context: ./requirements/backend/
+      dockerfile: Dockerfile
+      target: development
+    image: backend
+    restart: always
+    networks:
+      - db
+      - api
+    expose:
+      - $BACKEND_PORT
+      - $BACKEND_WS_PORT
+    volumes:
+      - type: bind
+        source: ./requirements/backend/app/
+        target: /app/
+      - type: volume
+        source: backend_node_modules
+        target: /app/node_modules
+    env_file:
+      - ./requirements/backend/.env
+      - ./requirements/database/.env
+    environment:
+      POSTGRES_HOST: $DATABASE_HOST
+      POSTGRES_PORT: $DATABASE_PORT
+      PORT: $BACKEND_PORT
+      WS_PORT: $BACKEND_WS_PORT
+
+  frontend:
+    container_name: $FRONTEND_HOST
+    build:
+      context: ./requirements/frontend/
+      dockerfile: Dockerfile
+      target: development
+    image: frontend
+    restart: always
+    networks:
+      - app
+    expose:
+      - $FRONTEND_PORT
+    volumes:
+      - type: bind
+        source: ./requirements/frontend/app/
+        target: /app/
+      - type: volume
+        source: frontend_node_modules
+        target: /app/node_modules/
+    environment:
+      API42_AUTHORIZE: $API42_AUTHORIZE
+      PORT: $FRONTEND_PORT
+
+  proxy:
+    container_name: $PROXY_HOST
+    build:
+      context: ./requirements/proxy/
+      dockerfile: Dockerfile
+    image: proxy
+    restart: always
+    networks:
+      - api
+      - app
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+    environment:
+      DOMAIN_NAME: $DOMAIN_NAME
+      BACKEND_PORT: $BACKEND_PORT
+      BACKEND_HOST: $BACKEND_HOST
+      FRONTEND_PORT: $FRONTEND_PORT
+      FRONTEND_HOST: $FRONTEND_HOST
+      BACKEND_WS_PORT: $BACKEND_WS_PORT

@@ -1,0 +1,100 @@
+/*variables coloring of components */
+:root {
+  --hue: 700; /*change color here */
+  --saturation: 50%;
+  --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+  --background-color: hsl(var(--hue), var(--saturation), 20%);
+  }
+
+body {
+  margin: 0; /* Rand*/
+  background-color: var(--background-color); /*page background*/
+  overflow: hidden /*no scrollbar when ball leaves fiel*/
+}
+
+/*ensures that all elements are properly diplayed with any height or width*/
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* Game container styles */
+.game-container {
+  position: relative;
+  height: 100vh; /* Adjust the height as needed */
+  width: 100vw; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the game container */
+}
+
+/* Paddle styles */
+.paddle {
+  --position: 50; /* a variable for calcualting top position*/
+
+  position: absolute;
+  background-color: var(--foreground-color); /* taken from :root */
+  top: calc(var(--position) * 1vh); /* calculates the middle for positioning the paddles*/
+  transform: translateY(-50%);
+  width: 1vw; /* Adjust the paddle width as needed */
+  height: 10vh; /* Adjust the paddle height as needed */
+}
+
+.paddle.home {
+  left: 1vw; /* Adjust the position from the left as needed */
+}
+
+.paddle.foreign {
+  right: 1vw; /* Adjust the position from the right as needed */
+}
+
+/* Ball styles */
+.ball {
+  --x: 50; /*coordinates of ball position  left-right*/
+  --y: 50; /*coordinates of ball position  up-down*/
+
+  position: absolute;
+  background-color: var(--foreground-color);
+  left: calc(var(--x) * 1vw); /*calculation of ball position based on width */
+  top: calc(var(--y) * 1vh); /* calculation of ball pos. based on height */
+  border-radius: 50%; /*makes the element(=ball) into a circle shape */
+  transform: translate(-50%, -50%); /*center the ball */
+  width: 2.5vh; /* Adjust the ball size as needed */
+  height: 2.5vh; /* Adjust the ball size as needed */
+}
+
+.score {
+  display: flex;
+  justify-content: center; /*center the element horizontally */
+  font-weight: bold; /*bold text*/
+  font-size: 7vh; /*text size*/
+  color: var(--foreground-color);
+}
+
+.score > * { /* is applied to all child elements of .score*/
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0 2vh;
+  margin: 1vh 0; /* space between scores*/
+  opacity: .5;
+  }
+
+.score > :first-child { /* player score */
+  text-align: right; /* align text within first child to the right */
+  border-right: .5vh solid var(--foreground-color); /* border between scores*/
+}
+
+.center {
+	border: 5px solid;
+	margin-left: 500px;
+	width: 50%;
+	padding: 10px;
+  }
+
+  .center button {
+	margin-left: 25px;
+  }
+
+  .heading {
+	color:chartreuse;
+	margin-left : '250px';
+	font-weight: 'bold';
+
+  }

@@ -1,0 +1,205 @@
+
+  /*              Conversation                      */
+
+  .conversation_main{
+	/* height:700px; */
+	height: 100vh;
+		/* border: 2px solid red; */
+
+  }
+
+
+  .conversation{
+	display: flex;
+	flex-direction: column;
+	/*///////////*/	
+	width: 165vh;
+	/* height: 50px; */
+  }
+
+
+  .conversation_channel_name{
+	display: flex;
+	/* justify-content: center; */
+	align-items : center;
+	padding: 2px;
+	background-color: #112b47;
+	/* #0f253d */
+	/* width: 980px; */
+		/*///////////*/	
+		width: 165vh;
+		height: 7vh;
+	margin-left: 0px;
+  }
+
+
+.messages_space_container{
+	display: flex;
+	height: 80vh;
+	/* border: 2px solid red; */
+	/* width: 998px; */
+
+	/* border: red; */
+	/* overflow-y: auto; */
+  }
+
+
+  .messages_space{
+	/* border: 2px solid rgb(43, 133, 55); */
+
+	overflow-y: auto;
+	max-width: 165vh;
+
+	/* width: 980px; */
+		/*///////////*/	
+		/* width: 130vh; */
+		padding: 20px;
+
+	/* height: 100px; */
+  }
+
+  .message{
+	/* border: 2px solid rgb(43, 133, 55); */
+
+	/* overflow-y: auto; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	background-color: #112b47a4;
+	max-width: 165vh;
+
+
+  }
+
+  /* style={{ color: 'white' }} */
+  .little_message{
+	/* border: 2px solid rgb(206, 46, 198); */
+	color: #eff4fab2;
+	display: flex;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	max-width: 165vh;
+
+  }
+
+
+
+
+
+
+
+/*               Message Bar                   */
+
+  .message_bar {
+	display: flex;
+	/* justify-content: space-between; */
+	align-items : center;
+	background: transparent;
+	/* background-color: rgb(14, 51, 107); */
+	/* width: 980px; */
+		/*///////////*/	
+		width: 165vh;
+		margin-left: 0px;
+	margin-top: 30px;
+	height: 45px;
+}
+
+  /* .message_bar_text_field{
+	margin-left: 30vh;
+	width: 300vh;
+	background-color: #112b47;
+  } */
+
+
+  .message_bar_send_button{
+	width: 55px;
+	margin-left: 5px;
+
+	color: white;
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+  }
+
+
+
+
+  .invites_container{
+	/* display: flex; */
+	width: 20vh;
+	height: 15vh;
+	padding: 5px;
+	/* border: 2px solid red; */
+	position: relative;
+	top: 87%;
+	left: 0%;
+	/* margin-left: -7px; */
+	color: rgb(51, 78, 112);
+	list-style: none;
+	/* height: 100%; */
+	max-height: 15vh;
+	overflow-y: auto;
+	background-color: #112b47;
+  }
+
+
+  .invites_cancel_button{
+	color: #c5dcf57e;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	/* margin-right: 5px; */
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+  }
+
+  .invites_cancel_button:hover {
+	box-shadow: 0 0 10px rgb(255, 255, 255);
+	background: #153252;
+}
+
+
+
+
+  .invites_invite_button{
+	color: #c5dcf57e;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	/* margin-right: 5px; */
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+  }
+
+  .invites_invite_button:hover {
+	box-shadow: 0 0 10px rgb(255, 255, 255);
+	background: #153252;
+}
+
+
+
+  .invites_accept_button{
+  color: #c5dcf57e;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  /* margin-right: 5px; */
+  background: transparent;
+  border: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+}
+
+.invites_accept_button:hover {
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  background: #153252;
+}

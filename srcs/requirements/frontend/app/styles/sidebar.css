@@ -1,0 +1,81 @@
+ .Sidebar {
+	opacity: 0.9;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 70px;
+	background: rgb(17, 17, 36);
+  }
+  
+.SidebarLogo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	} 
+
+	.SidebarLogo button{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		border-radius: 30px;
+		border: transparent;
+		color: white;
+		/* border: 1.9px solid rgb(236, 244, 255); */
+		cursor: pointer;
+		width: 55px;
+		height: 55px;
+		/* box-shadow: 0 0 10px rgb(57, 81, 187); */
+	}
+
+	/* .SidebarLogo button img {
+		width: 100px;
+		height: 100px;
+	} */
+
+  .Sidebar_top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: top;
+	height: 50%;
+	margin-top: 10px;
+  }
+  
+  .Sidebar_bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	height: 39%;
+  }
+
+  .SidebarButton button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	border-radius: 30px;
+	border: transparent;
+	color: white;
+	/* border: 1.9px solid rgb(236, 244, 255); */
+	cursor: pointer;
+	width: 55px;
+	height: 55px;
+	box-shadow: 0 0 10px rgb(57, 81, 187);
+
+
+  }
+  
+  /* .SidebarButton button img {
+	width: 40px;
+	height: 40px;
+  } */
+  
+  .SidebarButton button:hover {
+	transform: scale(0.9);
+	box-shadow: 0 0 10px rgb(255, 255, 255);
+
+
+}

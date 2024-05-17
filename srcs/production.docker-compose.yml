@@ -1,0 +1,124 @@
+version: '3.7'
+
+networks:
+
+  db:
+    name: db
+    driver: bridge
+
+  api:
+    name: api
+    driver: bridge
+
+  app:
+    name: app
+    driver: bridge
+
+services:
+
+  database:
+    container_name: $DATABASE_HOST
+    build:
+      context: ./requirements/database/
+      dockerfile: Dockerfile
+    image: database
+    restart: always
+    networks:
+      - db
+    expose:
+      - $DATABASE_PORT
+    env_file:
+      - ./requirements/database/.env
+    environment:
+      PGPORT: $DATABASE_PORT
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    container_name: $BACKEND_HOST
+    build:
+      context: ./requirements/backend/
+      dockerfile: Dockerfile
+      target: production
+    image: backend
+    restart: always
+    networks:
+      - db
+      - api
+    expose:
+      - $BACKEND_PORT
+      - $BACKEND_WS_PORT
+    env_file:
+      - ./requirements/backend/.env
+      - ./requirements/database/.env
+    environment:
+      POSTGRES_HOST: $DATABASE_HOST
+      POSTGRES_PORT: $DATABASE_PORT
+      PORT: $BACKEND_PORT
+      WS_PORT: $BACKEND_WS_PORT
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -kf http://localhost:${BACKEND_PORT} || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    container_name: $FRONTEND_HOST
+    build:
+      context: ./requirements/frontend/
+      dockerfile: Dockerfile
+      args:
+        API42_AUTHORIZE: $API42_AUTHORIZE
+        PORT: $FRONTEND_PORT
+      target: production
+    image: frontend
+    restart: always
+    networks:
+      - app
+    expose:
+      - $FRONTEND_PORT
+    environment:
+      PORT: $FRONTEND_PORT
+    depends_on:
+      backend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -kf http://localhost:${FRONTEND_PORT} || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  proxy:
+    container_name: $PROXY_HOST
+    build:
+      context: ./requirements/proxy/
+      dockerfile: Dockerfile
+    image: proxy
+    restart: always
+    networks:
+      - api
+      - app
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+    environment:
+      DOMAIN_NAME: $DOMAIN_NAME
+      BACKEND_PORT: $BACKEND_PORT
+      BACKEND_HOST: $BACKEND_HOST
+      FRONTEND_PORT: $FRONTEND_PORT
+      FRONTEND_HOST: $FRONTEND_HOST
+      BACKEND_WS_PORT: $BACKEND_WS_PORT
+    depends_on:
+      frontend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -kf https://${DOMAIN_NAME} || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

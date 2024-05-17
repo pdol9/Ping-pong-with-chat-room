@@ -1,0 +1,142 @@
+
+
+
+
+
+.direct_details_main {
+	width: 237px;
+	margin-left: 0px;
+	padding: 5px;
+	/* background-color: #f2f2f2; */
+	background-color: #0f253d;
+	/* position: relative;
+	top: 0%;
+	left: 85%; */
+  }
+
+
+	.hide_button{
+		width: 60px;
+		height: 30px;
+		margin-right: 5px;
+		background: transparent;
+		border: transparent;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+	  }
+	
+	  .hide_button:hover {
+		box-shadow: 0 0 10px rgb(255, 255, 255);
+		background: #153252;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Modal{
+	display: flex;
+	justify-content: left;
+	width: 350px;
+	height: 220px;
+	padding: 10px;
+	background-color: #0f253d;
+	position: fixed;
+	top: 30%;
+	left: 40%;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(253, 255, 253, 0.7);
+	
+  }
+
+  .channel-update-popup-content {
+
+	color: white;
+	/* justify-content: space-around; */
+	width: 350px;
+	height: 70px;
+	margin-top: 5px;
+	padding: 2px;
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+  }
+
+
+  .channel-update-popup-body{
+	color: white;
+	font-family: 'Lato', sans-serif, 'Montserrat Thin', sans-serif, Montserrat;
+	font-weight: 200;
+	font-size: 20px;
+	/* margin-bottom: 10px; */
+  }
+
+  .channel-update-popup-type{
+	/* display:flex; */
+
+	color: rgb(255, 255, 255);
+	margin-bottom: 10px;
+  }
+
+
+  .channel-update-popup-header{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+  }
+
+
+
+  .update_button{
+	color:white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	margin-top: 5px;
+	margin-left: 1px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+}
+
+	.update_button:hover {
+		box-shadow: 0 0 10px rgb(255, 255, 255);
+		background: #153252;
+	}
+
+  .exit_button{
+	color:white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	margin-top: 5px;
+	margin-left: 1px;
+	margin-bottom: 5px;
+	background: transparent;
+	border: transparent;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(255, 253, 253, 0.7);
+}
+
+.exit_button:hover {
+	box-shadow: 0 0 10px rgb(255, 255, 255);
+	background: #153252;
+}
+
